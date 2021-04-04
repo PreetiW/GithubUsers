@@ -8,15 +8,16 @@ export class ConnectService {
 
   public apiRoot = `https://api.github.com`;
   public headers = new HttpHeaders();
-  private token = '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';
+  private token = 'PUT_YOUR_PRIVATE_TOKEN';
 
   constructor(public http: HttpClient) { }
 
   public setHeaders(){
     this.headers = this.headers.set('Accept', 'application/vnd.github.v3+json');
-    if(this.token){
-      this.headers = this.headers.set('Authorization', `token ${this.token}`);
-    }
+    // uncomment this to use the GitHub API for unlimited times
+    // if(this.token){
+    //   this.headers = this.headers.set('Authorization', `token ${this.token}`);
+    // }
   }
 
   public get(enpoint:String){
