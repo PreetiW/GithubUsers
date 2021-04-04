@@ -1,38 +1,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      All About Github Users
+      All About Github
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content >
-
-    <p>Type any Github User Name to Get Started!</p>
-    <ion-input 
-      [(ngModel)]="searchInput"
-      placeholder="Search Github"
-      (ionChange)="onUserSearchInput()"
-      >
-      <ion-icon name="search-outline"></ion-icon>
-    </ion-input>
-
-    <div>
-      <p class="search-instruction" *ngIf="loading">
-        Getting users from Github...
-      </p>
+    <div class="body">
+      <p class="info">Type any Github User Name to Get Started!</p>
+      <ion-input 
+        [(ngModel)]="searchInput"
+        placeholder="Search Github"
+        (ionChange)="onUserSearchInput()"
+        >
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-input>
+  
+      <div>
+        <p class="search-instruction" *ngIf="loading">
+          Getting users from Github...
+        </p>
+      </div>
+  
+      <ion-list *ngIf="!loading">
+          <ion-item button *ngFor="let user of usersList" (click)="onUserSelect(user.login)">
+            <ion-avatar slot="start">
+              <img src="{{user.avatar_url}}">
+            </ion-avatar>
+            <ion-label>
+              <h2>{{user.login}}</h2>
+            </ion-label>
+          </ion-item>
+      </ion-list>
     </div>
-
-    <ion-list *ngIf="!loading">
-        <ion-item button *ngFor="let user of usersList" (click)="onUserSelect(user.login)">
-          <ion-avatar slot="start">
-            <img src="{{user.avatar_url}}">
-          </ion-avatar>
-          <ion-label>
-            <h2>{{user.login}}</h2>
-          </ion-label>
-        </ion-item>
-    </ion-list>
+   
 
 
 </ion-content>

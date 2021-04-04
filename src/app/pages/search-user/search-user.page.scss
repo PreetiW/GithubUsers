@@ -2,8 +2,18 @@ ion-input{
     border: solid 1px black;
     width: 30%;
     margin-left: 24px;
-    margin-bottom: 0px;
+    margin-right: 24px;
     border-radius: 16px;
+}
+
+.body {
+    max-width: var(--max-width);
+    margin: auto;
+}
+
+.info {
+    margin-left: 24px;
+    font-size: large;
 }
 
 .search-instruction {
@@ -13,7 +23,18 @@ ion-input{
     color: white;
     margin-top: 0px;
     margin-left: 24px;
+    margin-right: 24px;
     padding: 16px;
     border-radius: 4px;
 }
 
+@media screen and (max-width: 720px) {
+    ion-input{    
+        width: 80%;
+    }
+    
+    .search-instruction {
+        width: 80%;
+    }
+    
+}
