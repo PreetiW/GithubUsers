@@ -4,7 +4,15 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./pages/search-user/search-user.module').then( m => m.SearchUserPageModule)
+  },
+  {
+    path: 'search-user',
+    loadChildren: () => import('./pages/search-user/search-user.module').then( m => m.SearchUserPageModule)
+  },
+  {
+    path: 'repo-details',
+    loadChildren: () => import('./pages/repo-details/repo-details.module').then( m => m.RepoDetailsPageModule)
   }
 ];
 @NgModule({

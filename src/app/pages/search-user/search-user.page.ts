@@ -1,21 +1,23 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchUsersService } from '../services/seach-users/search-users.service';
-import { User } from '../types/users-types';
+import { SearchUsersService } from 'src/app/services/seach-users/search-users.service';
+import { User } from 'src/app/types/users-types';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-search-user',
+  templateUrl: './search-user.page.html',
+  styleUrls: ['./search-user.page.scss'],
 })
-export class Tab1Page {
+export class SearchUserPage {
+
   loading: boolean = false;
   usersList:  User[];
   searchInput = '';
   _timeout: any = null;
 
+
   constructor(private seachUsersSvc:SearchUsersService, 
-      public ngZone: NgZone, private router: Router) {}
+    public ngZone: NgZone, private router: Router) { }
 
   onUserSearchInput(){
     this.loading = true;
@@ -45,7 +47,7 @@ export class Tab1Page {
   onUserSelect(userName:string){
     console.log("Clicked", userName);
     this.searchInput = '';
-    this.router.navigate(['/repo-details'])
-  }
+    this.router.navigate(['/repo-details'], { queryParams: { 'user-name': userName }});
+  }  
 
 }
