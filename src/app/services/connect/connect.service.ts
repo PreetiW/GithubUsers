@@ -19,6 +19,11 @@ export class ConnectService {
     }
   }
 
+  public get(enpoint:String){
+    this.setHeaders();
+    return this.http.get(`${this.apiRoot}${enpoint}`, {headers: this.headers});
+  }
+
   public getWithParam(enpoint:String, queryParam: string){
     this.setHeaders();
     return this.http.get(`${this.apiRoot}${enpoint}${queryParam}`, {headers: this.headers});
