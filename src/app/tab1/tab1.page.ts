@@ -36,8 +36,13 @@ export class Tab1Page {
             this.usersList.length = 0;
         }
       });
-    },1000);
+    },500);
     
+  }
+
+  onUserSelect(userName:string){
+    console.log("Clicked", userName);
+    this.searchInput = '';
   }
 
 }

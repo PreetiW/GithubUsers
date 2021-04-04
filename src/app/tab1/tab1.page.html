@@ -19,18 +19,20 @@
 
     <div>
       <p class="search-instruction" *ngIf="loading">
-        Getting users info...
+        Getting users from Github...
       </p>
     </div>
 
-      <ul class="list-group"  *ngIf="!loading">
-        <li class="list-group-item" *ngFor="let user of usersList">
-          <img src="{{user.avatar_url}}">
-          <p>{{user.login}}</p>
-        </li>
-      </ul>
-
-
+    <ion-list *ngIf="!loading">
+        <ion-item button *ngFor="let user of usersList" (click)="onUserSelect(user.login)">
+          <ion-avatar slot="start">
+            <img src="{{user.avatar_url}}">
+          </ion-avatar>
+          <ion-label>
+            <h2>{{user.login}}</h2>
+          </ion-label>
+        </ion-item>
+    </ion-list>
 
 
 </ion-content>
