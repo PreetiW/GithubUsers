@@ -1,6 +1,6 @@
 # Github Users
 
-Github Users is a responsive website which will allow you to search any Github user and will show all their repositories details upon selecting the user. This website is made using [Ionic (With Angular)](https://ionicframework.com/docs/angular/overview)
+Github Users is a **responsive website (Works on both Browser and Mobile)** which will allow you to search any Github user and will show all their repositories details upon selecting the user. This website is made using [Ionic (With Angular)](https://ionicframework.com/docs/angular/overview)
 
 Check out the live version [here](https://github-users-preetiw.vercel.app/)
 
