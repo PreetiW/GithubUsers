@@ -1,0 +1,35 @@
+<div class="table" *ngIf="repoDetailsList">
+  <ion-grid>
+    
+    <ion-row>
+      <ion-col class="ion-no-padding">
+        <ion-row>
+          <ion-col
+            *ngFor="let heading of tableHeadings"
+            class="name center-content add-margin">
+            <div>
+              <b>{{ heading }}</b>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let repo of repoDetailsList">
+      <ion-col class="value add-margin">
+        <ion-item color="none" lines="none">
+          <ion-avatar slot="start">
+            <img src="{{repo.owner.avatar_url}}">
+          </ion-avatar>
+          <p>{{repo.owner.login}}</p>
+        
+        </ion-item>
+
+      </ion-col>
+      <ion-col class="value add-margin" *ngFor="let row of rows">
+        {{repo[row.property]}}
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</div>

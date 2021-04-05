@@ -1,0 +1,43 @@
+<div class="accordion">
+    <div class="info">Click on the Repo to know the details</div>
+    <div
+      class="wrapper"
+      *ngFor="let repo of repoDetailsList; let index = index"
+      [class.active]="index === selectedIndex">
+
+      <div tappable class="accordion-header" (click)="toggleContent(index)">
+        <div>
+          <b>{{ repo.name }}</b>
+        </div>
+        <ion-icon
+          src="assets/imgs/arrow-up.svg"
+          *ngIf="selectedIndex != index"
+        ></ion-icon>
+        <ion-icon
+          src="assets/imgs/arrow-down.svg"
+          *ngIf="selectedIndex == index"
+        ></ion-icon>
+      </div>
+
+      <div *ngIf="selectedIndex == index">
+        <div class="row">
+          <div class="heading">Owner</div>
+          <div class="value"> 
+            <ion-item color="none" lines="none">
+              <ion-avatar slot="start">
+                <img src="{{repo.owner.avatar_url}}">
+              </ion-avatar>
+              <p>{{repo.owner.login}}</p>
+            </ion-item>  
+          </div>
+        </div>
+        <div
+          *ngFor="let row of rows; let rowIndex = index"
+          class="row">
+          <div class="heading">{{ row.title }}</div>
+          <div class="value"> {{repo[row.property]}}</div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
