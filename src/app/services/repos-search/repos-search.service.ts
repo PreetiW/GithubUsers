@@ -10,12 +10,12 @@ import { User } from 'src/app/types/users-types';
 })
 export class ReposSearchService {
 
-  constructor(private connect: ConnectService) { }
+  constructor(private connectSvc: ConnectService) { }
 
   getUserRepos(userName: string): Observable<Repo[]>{
     const  endpoint = `/users/${userName}/repos`;
 
-    return this.connect.get(endpoint)
+    return this.connectSvc.get(endpoint)
       .pipe(
         map((res: any) => {
           return res.map(item =>{

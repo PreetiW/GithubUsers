@@ -9,13 +9,13 @@ import { ConnectService } from '../connect/connect.service';
 })
 export class SearchUsersService {
 
-  constructor(private connect: ConnectService) { }
+  constructor(private connectSvc: ConnectService) { }
 
   searchUsers(seachQuery:string): Observable<User[]> {
     const  endpoint = '/search/users';
     let queryParams = `?q=${seachQuery}`
 
-    return this.connect.getWithParam(endpoint, queryParams)
+    return this.connectSvc.getWithParam(endpoint, queryParams)
       .pipe(
         map((res: any) => {
           return res.items.map(item =>{
