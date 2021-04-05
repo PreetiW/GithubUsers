@@ -26,11 +26,14 @@ export class RepoDetailsPage implements OnInit {
   constructor(private repoSearchSvc: ReposSearchService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.userName = this.route.snapshot.queryParams['user-name'];
-    this.repoSearchSvc.getUserRepos(this.userName).subscribe((data) =>{
-      this.loadingRepoDetails = false;
-      this.repoDetailsList = data;
-    });
+    this.route.queryParams.subscribe(params => {
+      this.userName = params['user-name'];
+      console.log("User Name:", this.userName);
+      this.repoSearchSvc.getUserRepos(this.userName).subscribe((data) =>{
+        this.loadingRepoDetails = false;
+        this.repoDetailsList = data;
+      });
+    })
   }
 
 }
