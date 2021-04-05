@@ -28,12 +28,10 @@ export class SearchUserPage {
     this._timeout = window.setTimeout(() => {
       this._timeout = null;
       this.ngZone.run(() => {
-        console.log("Seaching:", this.searchInput);
         if(this.searchInput !== ""){
             this.seachUsersSvc.searchUsers(this.searchInput).subscribe( (data) => {
               this.usersList = data;
               this.loading = false;
-              console.log("User List:", this.usersList);
             });
         }else{
             this.loading = false;
@@ -45,7 +43,6 @@ export class SearchUserPage {
   }
 
   onUserSelect(userName:string){
-    console.log("Clicked", userName);
     this.searchInput = '';
     this.router.navigate(['/repo-details'], { queryParams: { 'user-name': userName }});
   }  

@@ -29,7 +29,6 @@ export class RepoDetailsPage implements OnInit {
     this.userName = this.route.snapshot.queryParams['user-name'];
     this.repoSearchSvc.getUserRepos(this.userName).subscribe((data) =>{
       this.loadingRepoDetails = false;
-      console.log("Repo data:", data);
       this.repoDetailsList = data;
     });
   }
